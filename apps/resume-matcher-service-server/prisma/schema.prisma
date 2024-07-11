@@ -1,0 +1,76 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Candidate {
+  id                String             @id @default(cuid())
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  name              String?
+  email             String?
+  cvText            String?
+  cvFileUrl         String?
+  interviewSessions InterviewSession[]
+}
+
+model JobDetails {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  title         String?
+  description   String?
+  interviewType String?
+  language      String?
+}
+
+model InterviewSession {
+  id           String     @id @default(cuid())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  sessionDate  DateTime?
+  transcript   Json?
+  overallScore Int?
+  candidate    Candidate? @relation(fields: [candidateId], references: [id])
+  candidateId  String?
+}
+
+model JobDescription {
+  id          String       @id @default(cuid())
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  description String?
+  location    String?
+  title       String?
+  postedDate  DateTime?
+  scanResults ScanResult[]
+}
+
+model Resume {
+  id          String       @id @default(cuid())
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  name        String?
+  fileUrl     String?
+  timestamp   DateTime?
+  scanResults ScanResult[]
+}
+
+model ScanResult {
+  id                   String          @id @default(cuid())
+  createdAt            DateTime        @default(now())
+  updatedAt            DateTime        @updatedAt
+  overallScore         Int?
+  skillsMatchScore     Int?
+  experienceMatchScore Int?
+  educationMatchScore  Int?
+  formattingScore      Int?
+  resume               Resume?         @relation(fields: [resumeId], references: [id])
+  resumeId             String?
+  jobDescription       JobDescription? @relation(fields: [jobDescriptionId], references: [id])
+  jobDescriptionId     String?
+}

@@ -5,6 +5,9 @@ import { InterviewSessionModule } from "./interviewSession/interviewSession.modu
 import { JobDescriptionModule } from "./jobDescription/jobDescription.module";
 import { ResumeModule } from "./resume/resume.module";
 import { ScanResultModule } from "./scanResult/scanResult.module";
+import { ApplicantModule } from "./applicant/applicant.module";
+import { MatchModule } from "./match/match.module";
+import { JobModule } from "./job/job.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
@@ -23,6 +26,9 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
     JobDescriptionModule,
     ResumeModule,
     ScanResultModule,
+    ApplicantModule,
+    MatchModule,
+    JobModule,
     HealthModule,
     PrismaModule,
     SecretsManagerModule,

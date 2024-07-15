@@ -74,3 +74,21 @@ model ScanResult {
   jobDescription       JobDescription? @relation(fields: [jobDescriptionId], references: [id])
   jobDescriptionId     String?
 }
+
+model Applicant {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Match {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Job {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

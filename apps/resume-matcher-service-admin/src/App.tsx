@@ -29,6 +29,18 @@ import { ScanResultList } from "./scanResult/ScanResultList";
 import { ScanResultCreate } from "./scanResult/ScanResultCreate";
 import { ScanResultEdit } from "./scanResult/ScanResultEdit";
 import { ScanResultShow } from "./scanResult/ScanResultShow";
+import { ApplicantList } from "./applicant/ApplicantList";
+import { ApplicantCreate } from "./applicant/ApplicantCreate";
+import { ApplicantEdit } from "./applicant/ApplicantEdit";
+import { ApplicantShow } from "./applicant/ApplicantShow";
+import { MatchList } from "./match/MatchList";
+import { MatchCreate } from "./match/MatchCreate";
+import { MatchEdit } from "./match/MatchEdit";
+import { MatchShow } from "./match/MatchShow";
+import { JobList } from "./job/JobList";
+import { JobCreate } from "./job/JobCreate";
+import { JobEdit } from "./job/JobEdit";
+import { JobShow } from "./job/JobShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -96,6 +108,27 @@ const App = (): React.ReactElement => {
           edit={ScanResultEdit}
           create={ScanResultCreate}
           show={ScanResultShow}
+        />
+        <Resource
+          name="Applicant"
+          list={ApplicantList}
+          edit={ApplicantEdit}
+          create={ApplicantCreate}
+          show={ApplicantShow}
+        />
+        <Resource
+          name="Match"
+          list={MatchList}
+          edit={MatchEdit}
+          create={MatchCreate}
+          show={MatchShow}
+        />
+        <Resource
+          name="Job"
+          list={JobList}
+          edit={JobEdit}
+          create={JobCreate}
+          show={JobShow}
         />
       </Admin>
     </div>
